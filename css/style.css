@@ -1,0 +1,168 @@
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+header {
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    color: #4da6ff;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+section {
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* CSS Grid para el Circuito */
+#grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 0;
+    overflow-x: auto;
+}
+
+.qubit-wire {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.qubit-label {
+    font-weight: bold;
+    margin-right: 15px;
+    min-width: 35px;
+    color: #88c0d0;
+}
+
+.wire-line {
+    flex-grow: 1;
+    min-width: 300px;
+    height: 2px;
+    background-color: #555;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 10px;
+}
+
+.gate-box {
+    width: 30px;
+    height: 30px;
+    background-color: #4da6ff;
+    color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-right: 10px;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.gate-cnot-control {
+    width: 12px;
+    height: 12px;
+    background-color: #ebcb8b;
+    border-radius: 50%;
+    margin-right: 10px;
+    z-index: 2;
+}
+
+/* Botones de Control */
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.gate-btn { background-color: #4da6ff; color: #000; }
+.gate-btn:hover { background-color: #3b8cd9; }
+
+.action-btn { background-color: #a3be8c; color: #000; padding: 10px 15px; }
+.action-btn:hover { background-color: #8da876; }
+
+.danger-btn { background-color: #bf616a; color: #fff; padding: 10px 15px; }
+.danger-btn:hover { background-color: #a54f57; }
+
+input[type="number"] {
+    padding: 6px;
+    width: 50px;
+    margin-right: 15px;
+    border-radius: 4px;
+    border: 1px solid #555;
+    background: #1a1a1a;
+    color: #fff;
+}
+
+#output-json {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 4px;
+    color: #a3be8c;
+    font-size: 1.1em;
+}
+
+/* Histograma (Día 4) */
+#histogram {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 6px;
+    min-height: 100px;
+}
+
+.bar-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.bar-label {
+    min-width: 60px;
+    font-family: monospace;
+    font-size: 1.1em;
+    color: #ebcb8b;
+    font-weight: bold;
+}
+
+.bar-track {
+    flex-grow: 1;
+    height: 24px;
+    background-color: #333;
+    border-radius: 4px;
+    margin: 0 15px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background-color: #a3be8c;
+    width: 0%; /* Se llena con JS */
+    transition: width 0.5s ease-out;
+}
+
+.bar-value {
+    min-width: 60px;
+    text-align: right;
+    font-weight: bold;
+    color: #a3be8c;
+}

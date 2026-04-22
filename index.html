@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q-bit - Simulador Cuántico</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Importando math.js desde CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Q-bit: Simulador Cuántico</h1>
+        <p>Simulador de hasta 8 qubits en el navegador</p>
+    </header>
+    
+    <main>
+        <section id="circuit-container">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 15px;">
+                <h2 style="margin: 0;">Circuito</h2>
+                <div>
+                    <label for="num-qubits-select" style="font-weight: bold; color: #88c0d0;">Número de Qubits:</label>
+                    <input type="number" id="num-qubits-select" min="1" max="8" value="3" style="width: 50px;">
+                </div>
+            </div>
+            <div id="grid"></div>
+        </section>
+        
+        <section id="controls">
+            <h2>Controles</h2>
+            <div class="control-group">
+                <label for="qubit-target">Qubit Objetivo:</label>
+                <input type="number" id="qubit-target" min="0" max="7" value="0">
+                <button id="btn-h" class="gate-btn">H (Hadamard)</button>
+                <button id="btn-x" class="gate-btn">X (NOT)</button>
+            </div>
+            <div class="control-group" style="margin-top: 10px;">
+                <label for="qubit-control">Qubit Control (CNOT):</label>
+                <input type="number" id="qubit-control" min="0" max="7" value="1">
+                <button id="btn-cnot" class="gate-btn">CNOT</button>
+            </div>
+            <div style="margin-top: 20px; border-top: 1px solid #333; padding-top: 10px;">
+                <button id="btn-simulate" class="action-btn">Simular y Medir</button>
+                <button id="btn-clear" class="danger-btn">Limpiar Circuito</button>
+            </div>
+        </section>
+
+        <section id="results">
+            <h2>Resultados de Medición</h2>
+            <div id="histogram">
+                <p style="color: #88c0d0;">Aún no se ha simulado. Agrega compuertas y presiona "Simular y Medir".</p>
+            </div>
+        </section>
+
+        <!-- Nueva sección: Esfera de Bloch -->
+        <section id="bloch-sphere-section" style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
+            <div>
+                <h2>Esfera de Bloch</h2>
+                <div style="margin-bottom: 10px;">
+                    <label for="bloch-qubit-select" style="font-weight: bold; color: #88c0d0;">Inspeccionar Qubit:</label>
+                    <input type="number" id="bloch-qubit-select" min="0" max="7" value="0">
+                </div>
+                <p style="color: #ccc; max-width: 300px; font-size: 0.9em; line-height: 1.4;">
+                    Visualiza individualmente cómo las compuertas (H, X) rotan el vector cuántico. 
+                    <br><br><i>Nota: Si el vector rojo es más corto y "se encoge" hacia el centro, significa que el qubit se encuentra en un estado mixto (entrelazado) y ha perdido pureza individual.</i>
+                </p>
+                <div id="bloch-coords" style="font-family: monospace; color: #a3be8c; margin-top: 15px; background: #1a1a1a; padding: 10px; border-radius: 4px;">
+                    x: 0.00<br>y: 0.00<br>z: 1.00
+                </div>
+            </div>
+            <div style="background: #1a1a1a; padding: 20px; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+                <!-- HTML5 Canvas para el render 3D-Isométrico -->
+                <canvas id="bloch-canvas" width="250" height="250"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <!-- Entry point de la aplicación -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
